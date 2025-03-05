@@ -91,7 +91,7 @@ def get_chatbot_response(query):
         "thank": "You're welcome! Let me know if you need any other help.",
         "bye": "Goodbye! Come back anytime for more conversions!",
     }
-    
+
     query = query.lower()
     for key in responses:
         if key in query:
@@ -113,7 +113,7 @@ with st.sidebar:
             <h2 style='color: #D5F5E3; text-align: center;'>Settings</h2>
         </div>
     """, unsafe_allow_html=True)
-    
+
     conversion_type = st.selectbox(
         "Choose conversion type",
         ["Length", "Weight", "Temperature"]
@@ -163,12 +163,12 @@ elif conversion_type == "Weight":
                         <p>{value} {from_unit} = {result:.4f} {to_unit}</p>
                     </div>
                 """, unsafe_allow_html=True)
-                
+
 elif conversion_type == "Temperature":
             units = ["celsius", "fahrenheit", "kelvin"]
             from_unit = st.selectbox("From", units)
             to_unit = st.selectbox("To", units)
-            
+
             if st.button("Convert!", key="temp"):
                 result = temp_converter(value, from_unit, to_unit)
                 st.balloons()  # Celebration effect
@@ -186,7 +186,7 @@ with col2:
             <h3 style='color: #FF5733;'>AI Conversion Assistant 🤖</h3>
         </div>
     """, unsafe_allow_html=True)
-    
+
     user_input = st.text_input("Ask me anything about unit conversion!", key="chat_input")
     if user_input:
         response = get_chatbot_response(user_input)
@@ -199,6 +199,6 @@ with col2:
 # Footer
 st.markdown("""
     <div style='text-align: center; margin-top: 30px; padding: 20px; background: #000000; border-radius: 10px; color: #FFFFFF;'>
-        <p>Made with ❤️ | Current time: {}</p>
+        <p>Made by Codehub with Ammar ❤️ | Current time: {}</p>
     </div>
 """.format(datetime.now().strftime("%Y-%m-%d %H:%M:%S")), unsafe_allow_html=True)
